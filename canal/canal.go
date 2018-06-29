@@ -11,12 +11,12 @@ import (
 	"sync"
 	"time"
 
-	"github.com/juju/errors"
 	"github.com/MichelBartz/go-mysql/client"
 	"github.com/MichelBartz/go-mysql/dump"
 	"github.com/MichelBartz/go-mysql/mysql"
 	"github.com/MichelBartz/go-mysql/replication"
 	"github.com/MichelBartz/go-mysql/schema"
+	"github.com/juju/errors"
 	"gopkg.in/birkirb/loggers.v1/log"
 )
 
@@ -405,17 +405,18 @@ func (c *Canal) prepareSyncer() error {
 	}
 
 	cfg := replication.BinlogSyncerConfig{
-		ServerID:        c.cfg.ServerID,
-		Flavor:          c.cfg.Flavor,
-		Host:            seps[0],
-		Port:            uint16(port),
-		User:            c.cfg.User,
-		Password:        c.cfg.Password,
-		Charset:         c.cfg.Charset,
-		HeartbeatPeriod: c.cfg.HeartbeatPeriod,
-		ReadTimeout:     c.cfg.ReadTimeout,
-		UseDecimal:      c.cfg.UseDecimal,
-		SemiSyncEnabled: c.cfg.SemiSyncEnabled,
+		ServerID:             c.cfg.ServerID,
+		Flavor:               c.cfg.Flavor,
+		Host:                 seps[0],
+		Port:                 uint16(port),
+		User:                 c.cfg.User,
+		Password:             c.cfg.Password,
+		Charset:              c.cfg.Charset,
+		HeartbeatPeriod:      c.cfg.HeartbeatPeriod,
+		ReadTimeout:          c.cfg.ReadTimeout,
+		UseDecimal:           c.cfg.UseDecimal,
+		SemiSyncEnabled:      c.cfg.SemiSyncEnabled,
+		MaxReconnectAttempts: c.cfg.MaxReconnectAttempts,
 	}
 
 	c.syncer = replication.NewBinlogSyncer(cfg)

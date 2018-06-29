@@ -6,8 +6,8 @@ import (
 	"time"
 
 	"github.com/BurntSushi/toml"
-	"github.com/juju/errors"
 	"github.com/MichelBartz/go-mysql/mysql"
+	"github.com/juju/errors"
 )
 
 type DumpConfig struct {
@@ -66,6 +66,9 @@ type Config struct {
 
 	// SemiSyncEnabled enables semi-sync or not.
 	SemiSyncEnabled bool `toml:"semi_sync_enabled"`
+
+	// Reconnection attempts limit when syncer target goes away
+	MaxReconnectAttempts int `toml: "max_reconnect_attempts"`
 }
 
 func NewConfigWithFile(name string) (*Config, error) {
@@ -100,6 +103,8 @@ func NewDefaultConfig() *Config {
 	c.ServerID = uint32(rand.Intn(1000)) + 1001
 
 	c.Flavor = "mysql"
+
+	c.MaxReconnectAttempts = 5
 
 	c.Dump.ExecutionPath = "mysqldump"
 	c.Dump.DiscardErr = true
