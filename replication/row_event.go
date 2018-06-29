@@ -11,7 +11,7 @@ import (
 
 	"github.com/juju/errors"
 	"github.com/shopspring/decimal"
-	. "github.com/siddontang/go-mysql/mysql"
+	. "github.com/MichelBartz/go-mysql/mysql"
 	"github.com/siddontang/go/hack"
 	"gopkg.in/birkirb/loggers.v1/log"
 )

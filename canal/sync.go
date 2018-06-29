@@ -7,9 +7,9 @@ import (
 
 	"github.com/juju/errors"
 	"github.com/satori/go.uuid"
-	"github.com/siddontang/go-mysql/mysql"
-	"github.com/siddontang/go-mysql/replication"
-	"github.com/siddontang/go-mysql/schema"
+	"github.com/MichelBartz/go-mysql/mysql"
+	"github.com/MichelBartz/go-mysql/replication"
+	"github.com/MichelBartz/go-mysql/schema"
 	"gopkg.in/birkirb/loggers.v1/log"
 )
 
